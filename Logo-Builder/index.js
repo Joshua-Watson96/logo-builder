@@ -1,6 +1,9 @@
+// requires inquirer
 const inquirer = require('inquirer');
+
 const fs = require('fs')
 
+// predefines the colours available for the text and shape
 const colourChoice = ["AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure", "Beige", "Bisque", "Black", "BlanchedAlmond", "Blue",
 "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Cornsilk",
 "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki",
@@ -21,8 +24,10 @@ const colourChoice = ["AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure"
 "Wheat", "White", "WhiteSmoke", "Yellow", "YellowGreen"
 ];
 
+// questions user will have to answer in order to generate the logo
 const questions = [
     {
+        // enters the characters for the logo
         type: 'input',
         name: 'text',
         message: 'Enter Text(up to 3 characters): ',
@@ -34,6 +39,7 @@ const questions = [
         }
     },
     {
+        // user chooses the colour of the logo text
         type: 'input',
         name: 'text-colour',
         message: 'Choose a colour for the text',
@@ -46,6 +52,7 @@ const questions = [
         }
     },
     {
+        // user selects the shape for the logo
         type: 'list',
         name: 'shape',
         message: 'Please choose a shape: ',
@@ -58,6 +65,7 @@ const questions = [
         }
     },
     {
+        // user selects the colour of the shape 
         type: 'input',
         name: 'shape-colour',
         message: 'Choose a colour for the shape',
@@ -71,6 +79,7 @@ const questions = [
 }
 ];
 
+// initilizes the application
 function init(){
     inquirer.prompt(questions)
     .then(answers => console.log(answers))
