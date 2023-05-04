@@ -1,35 +1,32 @@
-// constructs the shape
-class Shape {
-    constructor() {
-        this.color = "black";
-    }
-    setColor(color) {
-        this.color = color;
-    }
-    // gives an error if construct hasn't been implemented
-    render() {
-        throw new Error("I haven't implemented render method yet.");
-    }
-}
+class Logo {}
 
-// sets the properties for the triangle shape
-class Triangle extends Shape {
-    render() {
-        return `<polygon points="150, 18 244, 182 56, 182" fill="${this.color}" /> `;
-    }
-}
+Logo.prototype.createLogo = (data) => {
+      const text = data.text;
+      const text_colour = data.text_colour;
+      const shape = data.shape;
+      const shape_colour = data.shape_colour;
+      let logoSVG = "";
 
-// sets the properties for the Square shape
-class Square extends Shape {
-    render(){
-        return `<rect x="73" y="40" width="160" height="160" fill="${this.color}" />`;
-    }
-}
+      if (shape === "circle") {
+        return (logoSVG = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="100" r="80" fill="${shape_colour}" />
+      
+        <text x="150" y="120" font-size="50" text-anchor="middle" fill="${text_colour}">${text}</text>
+      
+      </svg>`);
+      } else if (shape === "triangle") {
+        return (logoSVG = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="150, 18 244, 182 56, 182" fill="${shape_colour}" />
+  
+    <text x="150" y="150" font-size="50" text-anchor="middle" fill="${text_colour}">${text}</text>
+     </svg>`);
+      } else if (shape === "square") {
+        return (logoSVG = `<svg version="1.1" width="300" height="200" xmlns="http://www.w3.org/2000/svg">
+    <rect x="75" y="35" width="150" height="150" fill="${shape_colour}" />
+  
+    <text x="150" y="125" font-size="50" text-anchor="middle" fill="${text_colour}">${text}</text>
+     </svg>`);
+      }
+    };
 
-// sets the properties for the Circle shape
-class Circle extends Shape {
-    render(){
-        return `<circle cx="150" cy="115" r="80" fill="${this.color}" />`;
-    }
-}
-module.exports = {Triangle, Square, Circle}
+module.exports = Logo;
